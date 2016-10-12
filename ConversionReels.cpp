@@ -57,6 +57,22 @@ int main()
        
     }
     while(nbIteration < precision);
+    /*
+    function fdec2NewBase(decimalNumber){
+     *  var i=0;
+     *  var id=0;
+     *  var convertedNumber = "";
+     *  while(decimalNumber !=0 & i<=Precision) {
+     *  decimalNumber *=Base;
+     *  id = Math.floor(d);
+     *  convertedNumber = convertedNumber+Digits.substr(id&(Base-1),1);
+     * i++; }
+     * return convertedNumber;
+        }
+     */
+    
+    
+    
     
     cout << endl << nbEntierChoisi << " en base " 
          << base << " s'ecrit " << resultat << endl;
