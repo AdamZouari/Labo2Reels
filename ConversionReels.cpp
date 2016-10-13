@@ -61,7 +61,7 @@ int main()
     do
     {
         produit = produitIntermediaire * base;
-        resteReel = (int)produit;
+        resteReel = (int)(produit + 0.5);
         produitIntermediaire = produit - int(produit);
         resultatDecimal = resultatDecimal + alphanum[resteReel];   
         ++nbIteration;
