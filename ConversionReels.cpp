@@ -17,23 +17,29 @@
  */
 #include <iostream>
 #include <cstdlib>
+#include <string>
 
 using namespace std;
 
-const string alphanum = {"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+const string alphanum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 int main()
 {   
-    long long int nbEntierChoisi, quotientEntier, quotientIntermediaire;
-    int base, reste, precision;
+    long double nbReelChoisi, partieEntiereNb, 
+                produitIntermediaire, partieDecimaleNb, produit, resteReel;
+    
+    long long int quotient, quotientIntermediaire;
+    
+    int base, resteEntier, precision;
     int nbIteration = 0;
-    string resultat;
+    string resultatEntier, resultatDecimal, resultat;
     
     cout << "Entrez un nombre réel" << endl;
-    cin >> nbEntierChoisi;
+    cin >> nbReelChoisi;
     
-    quotientIntermediaire = nbEntierChoisi;
-    
+    quotientIntermediaire = partieEntiereNb = int(nbReelChoisi);
+    produitIntermediaire = partieDecimaleNb = nbReelChoisi - int(nbReelChoisi);
+            
     cout << "Entrez une base" << endl;
     cin >> base;
     
@@ -43,20 +49,27 @@ int main()
     // pour la partie entière
     do
     {
-    quotientEntier = quotientIntermediaire / base;
-    reste = quotientIntermediaire % base;
-    quotientIntermediaire = quotientEntier;
-    resultat = alphanum[reste] + resultat;
+    quotient = quotientIntermediaire / base;
+    resteEntier = quotientIntermediaire % base;
+    quotientIntermediaire = quotient;
+    resultatEntier = alphanum[resteEntier] + resultatEntier;
     
     }
-    while(quotientEntier);
+    while(quotient);
     
     // pour la partie fractionnaire
     do
     {
-       
+        produit = produitIntermediaire * base;
+        resteReel = (int)produit;
+        produitIntermediaire = produit - int(produit);
+        resultatDecimal = resultatDecimal + alphanum[resteReel];   
+        ++nbIteration;
     }
     while(nbIteration < precision);
+    
+    resultat = resultatEntier + "." + resultatDecimal;
+            
     /*
     function fdec2NewBase(decimalNumber){
      *  var i=0;
@@ -74,7 +87,7 @@ int main()
     
     
     
-    cout << endl << nbEntierChoisi << " en base " 
+    cout << endl << nbReelChoisi << " en base " 
          << base << " s'ecrit " << resultat << endl;
 
    return EXIT_SUCCESS;
