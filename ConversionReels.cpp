@@ -37,8 +37,8 @@ int main()
     cout << "Entrez un nombre réel" << endl;
     cin >> nbReelChoisi;
     
-    quotientIntermediaire = partieEntiereNb = int(nbReelChoisi);
-    produitIntermediaire = partieDecimaleNb = nbReelChoisi - int(nbReelChoisi);
+    quotientIntermediaire = partieEntiereNb = (long long)nbReelChoisi;
+    produitIntermediaire = partieDecimaleNb = nbReelChoisi - (long long)nbReelChoisi;
             
     cout << "Entrez une base" << endl;
     cin >> base;
