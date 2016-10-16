@@ -33,10 +33,11 @@ int main()
     int base, resteEntier, precision, negatif = 0, nbIteration = 0;
     string resultatEntier, resultatDecimal, resultat;
     
-    cout << "Entrez un nombre réel : " ;
+    cout << "Entrez un nombre reel : " ;
     cin >> nbReelChoisi;
 
-    if (nbReelChoisi < 0) {
+    if (nbReelChoisi < 0) 
+    {
         nbReelChoisi = -nbReelChoisi;
         negatif = 1;
     }
@@ -83,7 +84,8 @@ int main()
     
     cout << endl << (negatif? "-" :"") << nbReelChoisi << " en base " 
          << base << " s'ecrit : " << (negatif ? "-" :"") << resultat 
-         << " avec " << precision << " chiffre" << (precision >= 1 ? "s" : "") <<" apres la virgule" << endl;
+         << " avec " << precision << " chiffre" << (precision >= 1 ? "s" : "") 
+         << " apres la virgule" << endl;
 
    return 0;
 }
