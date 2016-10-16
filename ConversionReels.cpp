@@ -72,11 +72,18 @@ int main()
     }
     while(nbIteration < precision);
     
-    resultat = resultatEntier + "." + resultatDecimal;
-   
+    if(!precision)
+    {
+        resultat = resultatEntier;
+    }
+    else
+    {
+        resultat = resultatEntier + "." + resultatDecimal;
+    }
+    
     cout << endl << (negatif? "-" :"") << nbReelChoisi << " en base " 
-         << base << " s'ecrit : " << (negatif? "-" :"") << resultat 
-         << " avec " << precision << " chiffres apres la virgule" << endl;
+         << base << " s'ecrit : " << (negatif ? "-" :"") << resultat 
+         << " avec " << precision << " chiffre" << (precision >= 1 ? "s" : "") <<" apres la virgule" << endl;
 
    return 0;
 }
