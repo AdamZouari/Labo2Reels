@@ -30,20 +30,24 @@ int main()
     
     long long int quotient, quotientIntermediaire;
     
-    int base, resteEntier, precision;
-    int nbIteration = 0;
+    int base, resteEntier, precision, negatif = 0, nbIteration = 0;
     string resultatEntier, resultatDecimal, resultat;
     
-    cout << "Entrez un nombre réel" << endl;
+    cout << "Entrez un nombre réel : " ;
     cin >> nbReelChoisi;
+
+    if (nbReelChoisi < 0) {
+        nbReelChoisi = -nbReelChoisi;
+        negatif = 1;
+    }
     
     quotientIntermediaire = partieEntiereNb = (long long)nbReelChoisi;
     produitIntermediaire = partieDecimaleNb = nbReelChoisi - (long long)nbReelChoisi;
             
-    cout << "Entrez une base" << endl;
+    cout << endl << "Entrez une base (de 2 a 36) : ";
     cin >> base;
     
-    cout << "Entrez une precision" << endl;
+    cout << endl << "Entrez une precision : ";
     cin >> precision;
     
     // pour la partie entière
@@ -63,32 +67,16 @@ int main()
         produit = produitIntermediaire * base;
         resteReel = (int)(produit + 0.5);
         produitIntermediaire = produit - int(produit);
-        resultatDecimal = resultatDecimal + alphanum[resteReel];   
+        resultatDecimal += alphanum[resteReel];   
         ++nbIteration;
     }
     while(nbIteration < precision);
     
     resultat = resultatEntier + "." + resultatDecimal;
-            
-    /*
-    function fdec2NewBase(decimalNumber){
-     *  var i=0;
-     *  var id=0;
-     *  var convertedNumber = "";
-     *  while(decimalNumber !=0 & i<=Precision) {
-     *  decimalNumber *=Base;
-     *  id = Math.floor(d);
-     *  convertedNumber = convertedNumber+Digits.substr(id&(Base-1),1);
-     * i++; }
-     * return convertedNumber;
-        }
-     */
-    
-    
-    
-    
-    cout << endl << nbReelChoisi << " en base " 
-         << base << " s'ecrit " << resultat << endl;
+   
+    cout << endl << (negatif? "-" :"") << nbReelChoisi << " en base " 
+         << base << " s'ecrit : " << (negatif? "-" :"") << resultat 
+         << " avec " << precision << " chiffres apres la virgule" << endl;
 
-   return EXIT_SUCCESS;
+   return 0;
 }
