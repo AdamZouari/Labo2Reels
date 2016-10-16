@@ -54,10 +54,10 @@ int main()
     // pour la partie entière
     do
     {
-    quotient = quotientIntermediaire / base;
-    resteEntier = quotientIntermediaire % base;
-    quotientIntermediaire = quotient;
-    resultatEntier = alphanum[resteEntier] + resultatEntier;
+        quotient = quotientIntermediaire / base;
+        resteEntier = quotientIntermediaire % base;
+        quotientIntermediaire = quotient;
+        resultatEntier = alphanum[resteEntier] + resultatEntier;
     
     }
     while(quotient);
@@ -66,7 +66,7 @@ int main()
     do
     {
         produit = produitIntermediaire * base;
-        resteReel = (int)(produit + 0.5);
+        resteReel = (int)(produit);
         produitIntermediaire = produit - int(produit);
         resultatDecimal += alphanum[resteReel];   
         ++nbIteration;
