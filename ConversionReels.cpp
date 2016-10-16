@@ -20,7 +20,7 @@
 #include <string>
 
 using namespace std;
-
+// Constante utilisée pour l'affichage des bases > 10
 const string alphanum = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 int main()
@@ -35,7 +35,7 @@ int main()
     
     cout << "Entrez un nombre reel : " ;
     cin >> nbReelChoisi;
-
+    // Si le nombre réel est négatif, on lui rajoute le signe plus tard
     if (nbReelChoisi < 0) 
     {
         nbReelChoisi = -nbReelChoisi;
@@ -44,14 +44,14 @@ int main()
     
     quotientIntermediaire = partieEntiereNb = (long long)nbReelChoisi;
     produitIntermediaire = partieDecimaleNb = nbReelChoisi - (long long)nbReelChoisi;
-            
+    // Saisie utilisateur de la base et de la précision        
     cout << endl << "Entrez une base (de 2 a 36) : ";
     cin >> base;
     
     cout << endl << "Entrez une precision : ";
     cin >> precision;
     
-    // pour la partie entière
+    // Pour la partie entière
     do
     {
         quotient = quotientIntermediaire / base;
@@ -62,7 +62,7 @@ int main()
     }
     while(quotient);
     
-    // pour la partie fractionnaire
+    // Pour la partie fractionnaire
     do
     {
         produit = produitIntermediaire * base;
@@ -71,17 +71,18 @@ int main()
         resultatDecimal += alphanum[resteReel];   
         ++nbIteration;
     }
-    while(nbIteration < precision);
+    while(nbIteration < precision); // Tant qu'on atteint pas la précision souhaitée
     
+    // Si le nombre n'a pas de chiffre après la virgule, on affiche directement l'entier
     if(!precision)
     {
         resultat = resultatEntier;
     }
-    else
+    else // Autrement on rajoute le résultat décimal également
     {
         resultat = resultatEntier + "." + resultatDecimal;
     }
-    
+    // Affichage du résultat
     cout << endl << (negatif? "-" :"") << nbReelChoisi << " en base " 
          << base << " s'ecrit : " << (negatif ? "-" :"") << resultat 
          << " avec " << precision << " chiffre" << (precision >= 1 ? "s" : "") 
